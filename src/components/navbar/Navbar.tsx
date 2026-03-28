@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
+  { name: "Services", href: "/services" },
   {
     name: "About Us",
     dropdown: [

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link"; // ✅ ADD THIS
 import {
   Code2,
   Cloud,
@@ -88,14 +89,20 @@ export default function Hero() {
             that help businesses grow faster in a connected world.
           </motion.p>
 
-          <motion.button
+          {/* ✅ ONLY CHANGE HERE */}
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 bg-white text-orange-600 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg"
           >
-            Explore Services ↓
-          </motion.button>
+            <Link
+              href="/services"
+              className="inline-block mt-8 bg-white text-orange-600 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg"
+            >
+              Explore Services ↓
+            </Link>
+          </motion.div>
+
         </div>
       </div>
 
@@ -122,17 +129,14 @@ export default function Hero() {
                   flex flex-col
                 "
               >
-                {/* ICON */}
                 <div className="mb-3">
                   <Icon className="w-6 h-6 text-orange-500" />
                 </div>
 
-                {/* TITLE */}
                 <h3 className="font-semibold text-sm leading-tight">
                   {item.title}
                 </h3>
 
-                {/* DESC */}
                 <p className="text-xs text-gray-600 mt-2 leading-relaxed">
                   {item.desc}
                 </p>
