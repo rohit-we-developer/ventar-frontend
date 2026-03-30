@@ -12,20 +12,6 @@ export default function Footer() {
   return (
     <div className="relative">
 
-      {/* WAVE (PERFECT FIX) */}
-      {/* <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0">
-        <svg
-          viewBox="0 0 1440 150"
-          className="w-full h-[140px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,120 C300,40 600,180 900,80 C1200,0 1440,120 1440,120 L1440,0 L0,0 Z"
-            fill="#020617"
-          />
-        </svg>
-      </div> */}
-
       {/* FOOTER */}
       <footer className="relative bg-[#020617] text-gray-400 pt-32 pb-10 px-6 z-10">
 
@@ -33,9 +19,17 @@ export default function Footer() {
 
           {/* BRAND */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-3">
-              Ventar
-            </h2>
+
+            {/* 🔥 LOGO ADDED (ONLY CHANGE) */}
+            <motion.img
+              src="/logo.png.4.jpg"
+              alt="Ventar Logo"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
+              className="h-30 md:h-30 mb-5 object-contain"
+            />
 
             <p className="text-sm leading-relaxed mb-5">
               Building modern digital solutions that solve real-world problems 
@@ -43,7 +37,7 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-3">
-              {[Globe, ].map((Icon, i) => (
+              {[Globe].map((Icon, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ y: -3 }}

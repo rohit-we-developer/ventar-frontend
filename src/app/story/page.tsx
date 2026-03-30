@@ -3,8 +3,35 @@
 import Navbar from "@/components/navbar/Navbar";
 import { motion } from "framer-motion";
 import { Target, Rocket, Lightbulb } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function StoryPage() {
+
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+
+  useEffect(() => {
+    let i1 = 0, i2 = 0, i3 = 0;
+
+    const interval = setInterval(() => {
+      if (i1 < 50) {
+        i1++;
+        setCount1(i1);
+      }
+      if (i2 < 20) {
+        i2++;
+        setCount2(i2);
+      }
+      if (i3 < 3) {
+        i3++;
+        setCount3(i3);
+      }
+    }, 80);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="bg-[#f3dfc9] min-h-screen">
 
@@ -49,26 +76,39 @@ export default function StoryPage() {
         </motion.p>
       </section>
 
-      {/* 🔥 STATS (CONSISTENT CARDS) */}
+      {/* 🔥 STATS (ONLY CHANGE HERE) */}
       <section className="px-6 pb-16 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
 
-          {[
-            { num: "50+", text: "Projects Delivered" },
-            { num: "20+", text: "Happy Clients" },
-            { num: "3+", text: "Years Experience" },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg transition h-[160px] flex flex-col justify-center"
-            >
-              <h3 className="text-3xl font-bold text-orange-500">
-                {item.num}
-              </h3>
-              <p className="text-gray-600 mt-2">{item.text}</p>
-            </motion.div>
-          ))}
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="bg-white rounded-2xl p-8 text-center shadow-lg transition h-[160px] flex flex-col justify-center"
+          >
+            <h3 className="text-3xl font-bold text-orange-500">
+              {count1}+
+            </h3>
+            <p className="text-gray-600 mt-2">Projects Delivered</p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="bg-white rounded-2xl p-8 text-center shadow-lg transition h-[160px] flex flex-col justify-center"
+          >
+            <h3 className="text-3xl font-bold text-orange-500">
+              {count2}+
+            </h3>
+            <p className="text-gray-600 mt-2">Happy Clients</p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="bg-white rounded-2xl p-8 text-center shadow-lg transition h-[160px] flex flex-col justify-center"
+          >
+            <h3 className="text-3xl font-bold text-orange-500">
+              {count3}+
+            </h3>
+            <p className="text-gray-600 mt-2">Years Experience</p>
+          </motion.div>
 
         </div>
       </section>
@@ -114,7 +154,7 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* 🔥 VALUES (FIXED SAME SIZE) */}
+      {/* 🔥 VALUES */}
       <section className="px-6 pb-24 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
 
