@@ -264,7 +264,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl md:text-6xl font-semibold leading-tight drop-shadow-lg"
           >
-            Ventar IT Solutions —
+            Ventar IT Solutions 
             <span className="block mt-2">
               Your Trusted Digital Partner
             </span>
