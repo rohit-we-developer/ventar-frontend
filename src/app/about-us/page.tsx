@@ -195,34 +195,43 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="pb-20 px-6">
+      <section className="pb-16 md:pb-20 px-4 md:px-6">
+
         <motion.div
-          className="max-w-4xl mx-auto text-center bg-white rounded-3xl p-10 shadow-lg"
+          className="max-w-4xl mx-auto text-center bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-lg"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h2 className="text-2xl font-semibold mb-4">Ready to work with us?</h2>
 
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4">
+            Ready to work with us?
+          </h2>
+
+          <p className="text-gray-600 mb-5 md:mb-6 text-sm md:text-base">
             Let’s collaborate to build powerful digital solutions that create real impact.
           </p>
 
-          <div className="flex justify-center gap-5">
-            <Link href="/contact">
-              <button className="px-8 py-3 bg-orange-600 text-white rounded-full hover:scale-105 transition">
+          {/* BUTTONS */}
+          <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-5">
+
+            <Link href="/contact" className="w-full md:w-auto">
+              <button className="w-full md:w-auto px-6 md:px-8 py-3 bg-orange-600 text-white rounded-full hover:scale-105 transition">
                 Contact Us →
               </button>
             </Link>
 
-            <Link href="/">
-              <button className="px-8 py-3 bg-gray-200 rounded-full hover:scale-105 transition">
+            <Link href="/" className="w-full md:w-auto">
+              <button className="w-full md:w-auto px-6 md:px-8 py-3 bg-gray-200 rounded-full hover:scale-105 transition">
                 ← Back to Home
               </button>
             </Link>
+
           </div>
+
         </motion.div>
+
       </section>
     </div>
   );

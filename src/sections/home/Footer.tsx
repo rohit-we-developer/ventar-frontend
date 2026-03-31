@@ -92,9 +92,9 @@ export default function Footer() {
 
               {[
                 { name: "Blog", link: "/" },
-                { name: "FAQs", link: "/faq" },
-                { name: "Privacy Policy", link: "/" },
-                { name: "Terms of Service", link: "/" },
+                { name: "FAQs", link: "/FAQ" },
+                { name: "Privacy-Policy", link: "/privacy-policy" },
+                { name: "Terms-of-Service", link: "/terms-of-service" },
               ].map((item, i) => (
 
                 <li key={i}>

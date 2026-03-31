@@ -156,52 +156,56 @@ export default function OurAim() {
       {/* 🔥 APPROACH (CENTER TIMELINE PRO) */}
       <section className="py-24 px-6 max-w-5xl mx-auto relative">
 
-        <h2 className="text-3xl font-semibold text-center mb-16">
-          Our Approach
-        </h2>
+  <h2 className="text-3xl font-semibold text-center mb-16">
+    Our Approach
+  </h2>
 
-        <div className="relative border-l-2 border-orange-200 pl-10 space-y-12">
+  <div className="relative border-l-2 border-orange-200 pl-12 space-y-12">
 
-          {[
-            {
-              icon: <Workflow />,
-              title: "Structured Execution",
-              desc: "We follow a systematic approach from planning to deployment, ensuring clarity, efficiency, and successful delivery.",
-            },
-            {
-              icon: <Lightbulb />,
-              title: "Problem Solving Mindset",
-              desc: "We focus on understanding real-world problems and delivering solutions that are practical, scalable, and impactful.",
-            },
-            {
-              icon: <Globe />,
-              title: "Future Ready Thinking",
-              desc: "We build solutions that are adaptable and ready for evolving technologies and changing business environments.",
-            },
-          ].map((item, i) => (
+    {[
+      {
+        icon: <Workflow />,
+        title: "Structured Execution",
+        desc: "We follow a systematic approach from planning to deployment, ensuring clarity, efficiency, and successful delivery.",
+      },
+      {
+        icon: <Lightbulb />,
+        title: "Problem Solving Mindset",
+        desc: "We focus on understanding real-world problems and delivering solutions that are practical, scalable, and impactful.",
+      },
+      {
+        icon: <Globe />,
+        title: "Future Ready Thinking",
+        desc: "We build solutions that are adaptable and ready for evolving technologies and changing business environments.",
+      },
+    ].map((item, i) => (
 
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              className="relative group"
-            >
-              <div className="absolute -left-[30px] top-0 bg-white p-3 rounded-full shadow-lg text-orange-600 group-hover:scale-110 transition">
-                {item.icon}
-              </div>
+      <motion.div
+        key={i}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        className="relative flex items-start gap-4 group"
+      >
 
-              <h3 className="font-semibold mb-1">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
-
-            </motion.div>
-
-          ))}
-
+        {/* ICON */}
+        <div className="absolute -left-8 top-1 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow text-orange-600 group-hover:scale-110 transition">
+          {item.icon}
         </div>
 
-      </section>
+        {/* TEXT */}
+        <div className="ml-4">
+          <h3 className="font-semibold mb-1">{item.title}</h3>
+          <p className="text-gray-600 text-sm">{item.desc}</p>
+        </div>
 
+      </motion.div>
+
+    ))}
+
+  </div>
+
+</section>
       {/* 🔥 WHY CHOOSE (MINIMAL PREMIUM) */}
       <section className="py-24 px-6 bg-[#f1f5f9] text-center">
 
