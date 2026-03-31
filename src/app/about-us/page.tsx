@@ -174,7 +174,6 @@ export default function About() {
                   <div className="absolute inset-0 bg-orange-600/70" />
                   <div className="absolute bottom-6 left-6 right-6 text-white text-xl font-semibold flex items-center gap-2">
                     {item.icon}
-                    {item.title}
                   </div>
                 </div>
 
