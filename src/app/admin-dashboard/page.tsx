@@ -24,7 +24,7 @@ function LoginScreen({ onLogin }: { onLogin: (t: string) => void }) {
     setLoading(true);
     setErr("");
     try {
-      const data = await apiFetch("/auth/login", {
+      const data = await apiFetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({ username: u, password: p }),
       });
@@ -108,11 +108,11 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   useEffect(() => {
     Promise.all([
-      apiFetch("/services"),
-      apiFetch("/testimonials"),
-      apiFetch("/team"),
-      apiFetch("/contacts"),
-      apiFetch("/careers/all"),
+      apiFetch("/api/services"),
+      apiFetch("/api/testimonials"),
+      apiFetch("/api/team"),
+      apiFetch("/api/contacts"),
+      apiFetch("/api/careers/all"),
     ]).then(([s, t, tm, c, ca]) => {
       setCounts({
         services:     s.length,
