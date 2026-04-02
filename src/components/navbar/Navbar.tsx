@@ -15,13 +15,14 @@ const navLinks = [
       { name: "Team", href: "/about-us/team" },
     ],
   },
-  { name: "careers", href: "/careers" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -50,8 +51,7 @@ export default function Navbar() {
           }
         `}
         >
-
-          {/* 🔥 LOGO (SIZE + ANIMATION ONLY) */}
+          {/* LOGO */}
           <Link href="/">
             <motion.img
               src="/logo.png2.jpeg"
@@ -64,7 +64,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* DESKTOP MENU */}
+          {/* DESKTOP */}
           <div className="hidden md:flex items-center gap-8 relative">
             {navLinks.map((link) => {
               if (link.dropdown) {
@@ -103,6 +103,19 @@ export default function Navbar() {
                 );
               }
 
+              // 🔥 CONTACT BUTTON (DESKTOP)
+              if (link.name === "Contact") {
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 transition"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+
               return (
                 <Link
                   key={link.name}
@@ -134,18 +147,57 @@ export default function Navbar() {
             className="fixed top-24 left-1/2 -translate-x-1/2 w-[92%] bg-white rounded-xl shadow-xl p-6 z-[90]"
           >
             <div className="flex flex-col gap-4 text-center">
+
               {navLinks.map((link) => {
                 if (link.dropdown) {
-                  return link.dropdown.map((item) => (
+                  return (
+                    <div key={link.name}>
+                      {/* CLICK TITLE */}
+                      <div
+                        onClick={() => setMobileDropdown(!mobileDropdown)}
+                        className="cursor-pointer font-medium text-gray-700"
+                      >
+                        {link.name}
+                      </div>
+
+                      {/* DROPDOWN */}
+                      <AnimatePresence>
+                        {mobileDropdown && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="flex flex-col mt-2 gap-2"
+                          >
+                            {link.dropdown.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setMobileMenu(false)}
+                                className="text-sm text-gray-600 hover:text-orange-500"
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                // 🔥 CONTACT BUTTON (MOBILE)
+                if (link.name === "Contact") {
+                  return (
                     <Link
-                      key={item.name}
-                      href={item.href}
+                      key={link.name}
+                      href={link.href}
                       onClick={() => setMobileMenu(false)}
-                      className="text-gray-700 font-medium hover:text-orange-500"
+                      className="bg-orange-500 text-white py-2 rounded-full hover:bg-orange-600 transition"
                     >
-                      {item.name}
+                      {link.name}
                     </Link>
-                  ));
+                  );
                 }
 
                 return (
@@ -159,6 +211,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
             </div>
           </motion.div>
         )}

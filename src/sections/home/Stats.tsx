@@ -28,93 +28,137 @@ function Counter({ target }: { target: number }) {
 
 export default function Stats() {
   return (
-    <section className="py-16 md:py-20 bg-[#f8f7f4]">
+    <section className="bg-[#f8f7f4]">
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto border-t border-b border-gray-200 py-10 md:py-12"
-      >
+      {/* 🔥 YOUR ORIGINAL SECTION (UNCHANGED) */}
+      <div className="py-16 md:py-20">
 
-        {/* MOBILE → STACK */}
-        <div className="flex flex-col gap-10 md:hidden text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto border-t border-b border-gray-200 py-10 md:py-12"
+        >
 
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              <Counter target={50} />+
-            </h2>
-            <p className="mt-2 text-gray-600 text-sm">
-              Enterprise Projects Delivered
-            </p>
+          {/* MOBILE */}
+          <div className="flex flex-col gap-10 md:hidden text-center">
+
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">
+                <Counter target={50} />+
+              </h2>
+              <p className="mt-2 text-gray-600 text-sm">
+                Enterprise Projects Delivered
+              </p>
+            </div>
+
+            <div className="h-[1px] bg-gray-200 w-10 mx-auto" />
+
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">
+                99.98%
+              </h2>
+              <p className="mt-2 text-gray-600 text-sm">
+                Infrastructure Uptime
+              </p>
+            </div>
+
+            <div className="h-[1px] bg-gray-200 w-10 mx-auto" />
+
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">
+                <Counter target={30} />%
+              </h2>
+              <p className="mt-2 text-gray-600 text-sm">
+                Avg. Performance Optimization
+              </p>
+            </div>
+
           </div>
 
-          <div className="h-[1px] bg-gray-200 w-10 mx-auto" />
+          {/* DESKTOP */}
+          <div className="hidden md:grid md:grid-cols-3 text-center items-center">
 
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              99.98%
-            </h2>
-            <p className="mt-2 text-gray-600 text-sm">
-              Infrastructure Uptime
-            </p>
+            <div className="px-6">
+              <h2 className="text-5xl font-bold text-gray-900">
+                <Counter target={50} />+
+              </h2>
+              <p className="mt-3 text-gray-600 text-sm tracking-wide">
+                Enterprise Projects Delivered
+              </p>
+            </div>
+
+            <div className="h-16 w-[1px] bg-gray-300 mx-auto" />
+
+            <div className="px-6">
+              <h2 className="text-5xl font-bold text-gray-900">
+                99.98%
+              </h2>
+              <p className="mt-3 text-gray-600 text-sm tracking-wide">
+                Infrastructure Uptime
+              </p>
+            </div>
+
+            <div className="h-16 w-[1px] bg-gray-300 mx-auto" />
+
+            <div className="px-6">
+              <h2 className="text-5xl font-bold text-gray-900">
+                <Counter target={30} />%
+              </h2>
+              <p className="mt-3 text-gray-600 text-sm tracking-wide">
+                Avg. Performance Optimization
+              </p>
+            </div>
+
           </div>
 
-          <div className="h-[1px] bg-gray-200 w-10 mx-auto" />
+        </motion.div>
 
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              <Counter target={30} />%
-            </h2>
-            <p className="mt-2 text-gray-600 text-sm">
-              Avg. Performance Optimization
-            </p>
-          </div>
+      </div>
 
-        </div>
+      {/* 🔥 NOW ADDED BELOW (CORRECT POSITION) */}
 
-        {/* DESKTOP → ORIGINAL */}
-        <div className="hidden md:grid md:grid-cols-3 text-center items-center">
+      {/* RED STRIP */}
+      <div className="bg-red-600 text-white overflow-hidden whitespace-nowrap py-2 text-xs font-semibold tracking-widest">
+  <motion.div
+    animate={{ x: ["0%", "-100%"] }}
+    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+    className="flex gap-16"
+  >
+    {[...Array(2)].map((_, i) => (
+      <div key={i} className="flex gap-4">
+        <span>INNOVATION</span>
+        <span>•</span>
+        <span>BRAND SCALING</span>
+        <span>•</span>
+        <span>CUSTOM SOFTWARES</span>
+        <span>•</span>
+        <span>AI SOLUTIONS</span>
+      </div>
+    ))}
+  </motion.div>
+</div>
 
-          {/* ITEM 1 */}
-          <div className="px-6">
-            <h2 className="text-5xl font-bold text-gray-900">
-              <Counter target={50} />+
-            </h2>
-            <p className="mt-3 text-gray-600 text-sm tracking-wide">
-              Enterprise Projects Delivered
-            </p>
-          </div>
-
-          {/* DIVIDER */}
-          <div className="h-16 w-[1px] bg-gray-300 mx-auto" />
-
-          {/* ITEM 2 */}
-          <div className="px-6">
-            <h2 className="text-5xl font-bold text-gray-900">
-              99.98%
-            </h2>
-            <p className="mt-3 text-gray-600 text-sm tracking-wide">
-              Infrastructure Uptime
-            </p>
-          </div>
-
-          {/* DIVIDER */}
-          <div className="h-16 w-[1px] bg-gray-300 mx-auto" />
-
-          {/* ITEM 3 */}
-          <div className="px-6">
-            <h2 className="text-5xl font-bold text-gray-900">
-              <Counter target={30} />%
-            </h2>
-            <p className="mt-3 text-gray-600 text-sm tracking-wide">
-              Avg. Performance Optimization
-            </p>
-          </div>
-
-        </div>
-
-      </motion.div>
+      {/* BLACK STRIP */}
+      <div className="bg-black text-white overflow-hidden whitespace-nowrap py-2 text-xs font-semibold tracking-widest">
+  <motion.div
+    animate={{ x: ["-100%", "0%"] }}
+    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+    className="flex gap-16"
+  >
+    {[...Array(2)].map((_, i) => (
+      <div key={i} className="flex gap-4">
+        <span>5+ YEARS EXPERIENCE</span>
+        <span>•</span>
+        <span>SERVED 50+ CLIENTS</span>
+        <span>•</span>
+        <span>BUILT ENTERPRISE SYSTEMS</span>
+        <span>•</span>
+        <span>GLOBAL DELIVERY</span>
+      </div>
+    ))}
+  </motion.div>
+</div>
 
     </section>
   );
