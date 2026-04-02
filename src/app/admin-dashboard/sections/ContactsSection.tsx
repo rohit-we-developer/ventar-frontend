@@ -10,17 +10,17 @@ export default function ContactsSection() {
   const [data, setData] = useState<any[]>([]);
   const [selected, setSelected] = useState<any>(null);
 
-  const load = () => apiFetch("/contacts").then(setData);
+  const load = () => apiFetch("/api/contacts").then(setData);
   useEffect(() => { load(); }, []);
 
   const markRead = async (row: any) => {
-    await apiFetch(`/contacts/${row.id}/read`, { method: "PATCH" });
+    await apiFetch(`/api/contacts/${row.id}/read`, { method: "PATCH" });
     load();
   };
 
   const del = async (id: number) => {
     if (!confirm("Delete?")) return;
-    await apiFetch(`/contacts/${id}`, { method: "DELETE" });
+    await apiFetch(`/api/contacts/${id}`, { method: "DELETE" });
     load();
   };
 

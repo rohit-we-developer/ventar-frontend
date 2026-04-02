@@ -21,7 +21,7 @@ export default function TestimonialsSection() {
     is_active: true,
   });
 
-  const load = () => apiFetch("/testimonials").then(setData);
+  const load = () => apiFetch("/api/testimonials").then(setData);
   useEffect(() => { load(); }, []);
 
   const openCreate = () => {
@@ -31,9 +31,9 @@ export default function TestimonialsSection() {
 
   const save = async () => {
     if (modal === "create") {
-      await apiFetch("/testimonials", { method: "POST", body: JSON.stringify(form) });
+      await apiFetch("/api/testimonials", { method: "POST", body: JSON.stringify(form) });
     } else {
-      await apiFetch(`/testimonials/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
+      await apiFetch(`/api/testimonials/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
     }
     setModal(null);
     load();
@@ -41,7 +41,7 @@ export default function TestimonialsSection() {
 
   const del = async (id: number) => {
     if (!confirm("Delete?")) return;
-    await apiFetch(`/testimonials/${id}`, { method: "DELETE" });
+    await apiFetch(`/api/testimonials/${id}`, { method: "DELETE" });
     load();
   };
 

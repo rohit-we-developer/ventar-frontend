@@ -22,7 +22,7 @@ export default function TeamSection() {
     order: 0,
   });
 
-  const load = () => apiFetch("/team").then((res) => setData(Array.isArray(res) ? res : []));
+  const load = () => apiFetch("/api/team").then((res) => setData(Array.isArray(res) ? res : []));
   useEffect(() => { load(); }, []);
 
   const openCreate = () => {
@@ -57,9 +57,9 @@ export default function TeamSection() {
     };
 
     if (modal === "create") {
-      await apiFetch("/team", { method: "POST", body: JSON.stringify(payload) });
+      await apiFetch("/api/team", { method: "POST", body: JSON.stringify(payload) });
     } else {
-      await apiFetch(`/team/${form.id}`, { method: "PUT", body: JSON.stringify(payload) });
+      await apiFetch(`/api/team/${form.id}`, { method: "PUT", body: JSON.stringify(payload) });
     }
     setModal(null);
     load();
@@ -67,7 +67,7 @@ export default function TeamSection() {
 
   const del = async (id: number) => {
     if (!confirm("Delete this member?")) return;
-    await apiFetch(`/team/${id}`, { method: "DELETE" });
+    await apiFetch(`/api/team/${id}`, { method: "DELETE" });
     load();
   };
 

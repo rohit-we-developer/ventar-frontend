@@ -19,7 +19,7 @@ export default function ServicesSection() {
     is_active: true,
   });
 
-  const load = () => apiFetch("/services").then(setData);
+  const load = () => apiFetch("/api/services").then(setData);
   useEffect(() => { load(); }, []);
 
   const openCreate = () => {
@@ -34,9 +34,9 @@ export default function ServicesSection() {
 
   const save = async () => {
     if (modal === "create") {
-      await apiFetch("/services", { method: "POST", body: JSON.stringify(form) });
+      await apiFetch("/api/services", { method: "POST", body: JSON.stringify(form) });
     } else {
-      await apiFetch(`/services/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
+      await apiFetch(`/api/services/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
     }
     setModal(null);
     load();
@@ -44,7 +44,7 @@ export default function ServicesSection() {
 
   const del = async (id: number) => {
     if (!confirm("Delete this service?")) return;
-    await apiFetch(`/services/${id}`, { method: "DELETE" });
+    await apiFetch(`/api/services/${id}`, { method: "DELETE" });
     load();
   };
 

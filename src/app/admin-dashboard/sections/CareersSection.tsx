@@ -25,8 +25,8 @@ export default function CareersSection() {
   });
 
   const load = () => {
-    apiFetch("/careers/all").then(setData);
-    apiFetch("/careers/applications").then(setApps);
+    apiFetch("/api/careers/all").then(setData);
+    apiFetch("/api/careers/applications").then(setApps);
   };
   useEffect(() => { load(); }, []);
 
@@ -37,9 +37,9 @@ export default function CareersSection() {
 
   const save = async () => {
     if (modal === "create") {
-      await apiFetch("/careers", { method: "POST", body: JSON.stringify(form) });
+      await apiFetch("/api/careers", { method: "POST", body: JSON.stringify(form) });
     } else {
-      await apiFetch(`/careers/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
+      await apiFetch(`/api/careers/${form.id}`, { method: "PUT", body: JSON.stringify(form) });
     }
     setModal(null);
     load();
@@ -47,7 +47,7 @@ export default function CareersSection() {
 
   const del = async (id: number) => {
     if (!confirm("Delete?")) return;
-    await apiFetch(`/careers/${id}`, { method: "DELETE" });
+    await apiFetch(`/api/careers/${id}`, { method: "DELETE" });
     load();
   };
 
