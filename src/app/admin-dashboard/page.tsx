@@ -24,7 +24,7 @@ function LoginScreen({ onLogin }: { onLogin: (t: string) => void }) {
     setLoading(true);
     setErr("");
     try {
-      const data = await apiFetch("/auth/login", {
+      const data = await apiFetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({ username: u, password: p }),
       });
